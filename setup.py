@@ -70,7 +70,7 @@ data_files = [
 
 requires = [
     "offshoot",
-    "Cython==0.26.1"
+    "Cython"
 ]
 
 setup(
