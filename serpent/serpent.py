@@ -137,19 +137,6 @@ def setup_base():
             os.path.join(os.getcwd(), "requirements.txt")
         )
 
-    # Install the dependencies
-    print("Installing dependencies...")
-
-    if is_linux():
-        subprocess.call(shlex.split("pip install python-xlib"))
-    elif is_macos():
-        subprocess.call(shlex.split("pip install python-xlib pyobjc-framework-Quartz py-applescript"))
-    elif is_windows():
-        # Anaconda Packages
-        subprocess.call(shlex.split("conda install numpy scipy scikit-image scikit-learn h5py -y"), shell=True)
-
-    subprocess.call(shlex.split("pip install -r requirements.txt"))
-
     # Create Dataset Directories
     os.makedirs(os.path.join(os.getcwd(), "datasets/collect_frames"), exist_ok=True)
     os.makedirs(os.path.join(os.getcwd(), "datasets/collect_frames_for_context"), exist_ok=True)
