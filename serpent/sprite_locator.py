@@ -45,19 +45,19 @@ class SpriteLocator:
             search_result = cv2.matchTemplate(frame, template, cv2.TM_CCOEFF_NORMED)
         else:
             search_result = cv2.matchTemplate(frame, template, cv2.TM_CCORR_NORMED, mask=template_alpha)
-            
-        #res = cv2.matchTemplate(img_gray,template,cv2.TM_CCOEFF_NORMED)
-        #threshold = 0.8
-        #loc = np.where( res >= threshold)
-        #for pt in zip(*loc[::-1]):
-        #    cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0,0,255), 2)
-    
 
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(search_result)
 
-        if max_val >= threshold:
-            location = (max_loc[1], max_loc[0], max_loc[1]+sprite_data_shape[0], max_loc[0]+sprite_data_shape[1])
-            
+        if (max_val >= threshold):
+            if multi: # here we'll return all the coordinates that meet the threshold criteria
+                good_results = np.where( search_result >= threshold)
+                locations = []
+                for pt in zip(*good_results[::-1]):
+                    locations.append((pt[1], pt[0], pt[1]+sprite_data_shape[0], pt[0]+sprite_data_shape[1]))
+                location = locations
+            else:
+                location = (max_loc[1], max_loc[0], max_loc[1]+sprite_data_shape[0], max_loc[0]+sprite_data_shape[1])
+
         return location
 
 

@@ -248,6 +248,8 @@ class PyAutoGUIInputController(InputController):
             y = (sprite_location[0] + sprite_location[2]) // 2
 
             self.move(x=x, y=y)
+            if multi_rand:
+                print ("we clicks",x,y)
             self.click(button=button, **kwargs)
 
             return True
