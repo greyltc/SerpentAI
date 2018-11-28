@@ -6,6 +6,7 @@ import pyautogui
 
 import time
 
+import random
 
 keyboard_key_mapping = {
     KeyboardKey.KEY_ESCAPE.name: "esc",
@@ -230,9 +231,15 @@ class PyAutoGUIInputController(InputController):
             self.move(x=x, y=y)
             self.click(button=button, **kwargs)
 
-    def click_sprite(self, button=MouseButton.LEFT, sprite=None, game_frame=None, threshold = 0.95, threshold_alpha = 0.999, grayscale=True, **kwargs):
+
+    def click_sprite(self, button=MouseButton.LEFT, sprite=None, game_frame=None, threshold = 0.95, threshold_alpha = 0.999, grayscale=True, multi_rand = False **kwargs):
+        """multi_rand means if there are multiple sprite matches one will be clicked at random"""        
         if ("force" in kwargs and kwargs["force"] is True) or self.game_is_focused:
-            sprite_location = self.sprite_locator.better_locate(sprite=sprite, game_frame=game_frame, threshold = threshold, threshold_alpha = threshold_alpha, grayscale = grayscale)
+            if multi_rand == True:
+                sprite_locations = self.sprite_locator.better_locate(sprite=sprite, game_frame=game_frame, threshold = threshold, threshold_alpha = threshold_alpha, grayscale = grayscale, multi = True)
+                sprite_location = random.choice(sprite_locations)
+            else:
+                sprite_location = self.sprite_locator.better_locate(sprite=sprite, game_frame=game_frame, threshold = threshold, threshold_alpha = threshold_alpha, grayscale = grayscale)
 
             if sprite_location is None:
                 return False

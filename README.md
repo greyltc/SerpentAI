@@ -2,7 +2,17 @@
 
 # Serpent.AI - Game Agent Framework (Python)
 
-### Want to see the framework in action? The Serpent.AI Lab streams experiments in games 24/7 on [Twitch](https://www.twitch.tv/serpent_ai_labs) - [YouTube](https://www.youtube.com/c/SerpentAI/live) - [Mixer](https://mixer.com/Serpent_AI) 
+[![](https://img.shields.io/badge/project-website-brightgreen.svg?colorB=1bcc6f&longCache=true)](http://serpent.ai)
+[![](https://img.shields.io/badge/project-blog-brightgreen.svg?colorB=1bcc6f&longCache=true)](http://blog.serpent.ai)
+[![](https://img.shields.io/badge/project-wiki-brightgreen.svg?colorB=1bcc6f&longCache=true)](https://github.com/SerpentAI/SerpentAI/wiki)    
+[![](https://img.shields.io/badge/pypi-v2018.1.2-brightgreen.svg?colorB=007ec6&longCache=true)]()
+[![](https://img.shields.io/badge/python-3.6-brightgreen.svg?colorB=007ec6&longCache=true)]()
+[![](https://img.shields.io/badge/license-MIT-brightgreen.svg?colorB=007ec6&longCache=true)]()  
+[![](https://img.shields.io/badge/twitter-@Serpent__AI-brightgreen.svg?colorB=1da1f2&longCache=true)](https://twitter.com/Serpent_AI)
+
+## Bummer: Upstream end of life (November 2018)
+
+#### The upstream development work on the framework has stopped as of some time in August 2018 with an official EOL anncouncement in November 2018. In this fork, I'll attempt to maintain and expand this toolkit because I think it's a fun and interesting project. I'll only develop and test in Arch Linux, which means Windows and Mac are probably already broken here and will likey stay that way unless someone else wants to join in and maintain one or both of those.
 
 Serpent.AI is a simple yet powerful, novel framework to assist developers in the creation of game agents. Turn ANY video game you own  into a sandbox environment ripe for experimentation, all with familiar Python code. The framework's _raison d'être_ is first and foremost to provide a valuable tool for Machine Learning & AI research. It also turns out to be ridiculously fun to use as a hobbyist (and dangerously addictive; a fair warning)!
 
@@ -28,20 +38,14 @@ _Want to know more about how Serpent.AI came to be? Read [The Story Behind Serpe
 
 Guides, tutorials and videos are being produced and added to the [GitHub Wiki](https://github.com/SerpentAI/SerpentAI/wiki). It currently is the official source of documentation.
 
-## Getting Help
-
-If you encounter a problem while using the Serpent.AI framework, you are encouraged to create a GitHub [issue](https://github.com/SerpentAI/SerpentAI/issues/new). If you do so, please make sure to provide as much context as possible. You can also ask your questions and get help from the community on [Discord](https://discord.gg/9D5SuxH) in the *#serpent-ai-help* public channel. Installation problems should also be directed towards that Discord channel and not GitHub issues; Your chances of receiving a prompt response are much better that way!
-
-## Showcasing your Work
-
-Have you built something cool using Serpent.AI? Want to give the community progress updates? Share your repositories and videos in *#serpent-ai-showcase* on [Discord](https://discord.gg/9D5SuxH). There is also a [wiki page](https://github.com/SerpentAI/SerpentAI/wiki/Community-Plugin-Showcase) reserved for showcasing your plugins!
+### Installation
+These instructions supersedes any installation instuctions found on the upstream project's wiki (linked above). There is no more pyenv, there is no more pip and no more wheels (also no more Windows and no more Mac). Everything is now managed by Arch's package manager, pacman, so we have a one command install for all features:
+```
+yay -S python-serpent-ai-git # replace yay with your favorite AUR helper
+```
+This is for the dev-greyltc branch here. Maybe I'll make a stable release package at some point.
 
 ![](https://s3.ca-central-1.amazonaws.com/serpent-ai-assets/demo_ymbab.gif)
 
 _Experiment: Game agent learning to match tiles (You Must Build a Boat)_
 
-Serpent.AI is the love child of [@nbrochu](https://github.com/nbrochu)'s passion for science & experimentation, programming and video games. All of development and experiments can be seen live on the [Twitch Channel](https://www.twitch.tv/serpent_ai).
-
-_Business Contact: info@serpent.ai_
-
-_Twitter: [@Serpent_AI](https://twitter.com/Serpent_AI)_
