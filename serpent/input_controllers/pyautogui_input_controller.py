@@ -237,7 +237,10 @@ class PyAutoGUIInputController(InputController):
         if ("force" in kwargs and kwargs["force"] is True) or self.game_is_focused:
             if multi_rand == True:
                 sprite_locations = self.sprite_locator.better_locate(sprite=sprite, game_frame=game_frame, threshold = threshold, threshold_alpha = threshold_alpha, grayscale = grayscale, multi = True)
-                sprite_location = random.choice(sprite_locations)
+                if sprite_locations == None:
+                    sprite_location = sprite_locations
+                else:
+                    sprite_location = random.choice(sprite_locations)
             else:
                 sprite_location = self.sprite_locator.better_locate(sprite=sprite, game_frame=game_frame, threshold = threshold, threshold_alpha = threshold_alpha, grayscale = grayscale)
 
