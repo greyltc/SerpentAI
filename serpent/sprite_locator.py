@@ -11,12 +11,13 @@ class SpriteLocator:
     def __init__(self, **kwargs):
         pass
 
-    def better_locate(self, sprite=None, game_frame=None, threshold = 0.95, threshold_alpha = 0.999, grayscale = True):
+    def better_locate(self, sprite=None, game_frame=None, threshold = 0.95, threshold_alpha = 0.999, grayscale = True, multi = False):
         """
         kinda like locate function below only better
         threshold is the match threshold for normal searches
         threshold_alpha is the match threshold for sprites with alpha channels
         they're different numbers because the search algorithms produce results in different regions
+        multi = True will return a list of all coordinates that meet the threshold condition
         """
         location = None
         use_alpha_mask = False
