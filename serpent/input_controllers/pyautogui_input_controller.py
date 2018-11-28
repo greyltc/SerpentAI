@@ -232,7 +232,7 @@ class PyAutoGUIInputController(InputController):
             self.click(button=button, **kwargs)
 
 
-    def click_sprite(self, button=MouseButton.LEFT, sprite=None, game_frame=None, threshold = 0.95, threshold_alpha = 0.999, grayscale=True, multi_rand = False **kwargs):
+    def click_sprite(self, button=MouseButton.LEFT, sprite=None, game_frame=None, threshold = 0.95, threshold_alpha = 0.999, grayscale=True, multi_rand = False, **kwargs):
         """multi_rand means if there are multiple sprite matches one will be clicked at random"""        
         if ("force" in kwargs and kwargs["force"] is True) or self.game_is_focused:
             if multi_rand == True:
