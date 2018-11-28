@@ -38,12 +38,22 @@ _Want to know more about how Serpent.AI came to be? Read [The Story Behind Serpe
 
 Guides, tutorials and videos are being produced and added to the [GitHub Wiki](https://github.com/SerpentAI/SerpentAI/wiki). It currently is the official source of documentation.
 
-### Installation
-These instructions supersedes any installation instuctions found on the upstream project's wiki (linked above). There is no more pyenv, there is no more pip and no more wheels (also no more Windows and no more Mac). Everything is now managed by Arch's package manager, pacman, so we have a one command install for all features:
+### Installation and Setup
+These instructions supersede any installation instuctions found on the upstream project's wiki (linked above). There is no more pyenv, there is no more pip and no more wheels (also no more Windows and no more Mac). Everything is now managed by Arch's package manager, pacman, so we have a one command install for all features:
 ```
 yay -S python-serpent-ai-git # replace yay with your favorite AUR helper
 ```
-This is for the dev-greyltc branch here. Maybe I'll make a stable release package at some point.
+This package is for the dev-greyltc branch here. Maybe I'll make a stable release package at some point.
+
+Now you have the `serpent` command. Setup a serpent workspace folder with
+```
+mkdir serpent_workspace
+cd serpent_workspace
+serpent setup # just copies some setup files into the cwd
+```
+and the project is ready to use.
+
+With everything natively compiled for Arch now instead of using precompiled .whl packages, we should in theory, see a performance improvement.
 
 ![](https://s3.ca-central-1.amazonaws.com/serpent-ai-assets/demo_ymbab.gif)
 
