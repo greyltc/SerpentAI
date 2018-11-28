@@ -230,9 +230,9 @@ class PyAutoGUIInputController(InputController):
             self.move(x=x, y=y)
             self.click(button=button, **kwargs)
 
-    def click_sprite(self, button=MouseButton.LEFT, sprite=None, game_frame=None, threshold = 0.85, **kwargs):
+    def click_sprite(self, button=MouseButton.LEFT, sprite=None, game_frame=None, threshold = 0.95, alpha_threshold = 0.999, grayscale=True, **kwargs):
         if ("force" in kwargs and kwargs["force"] is True) or self.game_is_focused:
-            sprite_location = self.sprite_locator.better_locate(sprite=sprite, game_frame=game_frame, threshold = threshold)
+            sprite_location = self.sprite_locator.better_locate(sprite=sprite, game_frame=game_frame, threshold = threshold, alpha_threshold = alpha_threshold, grayscale = grayscale)
 
             if sprite_location is None:
                 return False

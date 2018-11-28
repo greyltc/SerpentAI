@@ -11,7 +11,7 @@ class SpriteLocator:
     def __init__(self, **kwargs):
         pass
 
-    def better_locate(self, sprite=None, game_frame=None, threshold = 0.90, threshold_alpha = 0.999, grayscale = True):
+    def better_locate(self, sprite=None, game_frame=None, threshold = 0.95, threshold_alpha = 0.999, grayscale = True):
         """
         kinda like locate function below only better
         threshold is the match threshold for normal searches
