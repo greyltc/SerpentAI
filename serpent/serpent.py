@@ -338,14 +338,14 @@ def plugins():
     print("\n".join(inactive_plugins or ["No inactive plugins..."]))
 
 
-def launch(game_name, no_pause=0):
+def launch(game_name):
     game = initialize_game(game_name)
-    game.launch(no_pause = no_pause)
+    game.launch()
 
 
-def play(game_name, game_agent_name, frame_handler=None):
+def play(game_name, game_agent_name, no_pause = 0, frame_handler=None):
     game = initialize_game(game_name)
-    game.launch(dry_run=True)
+    game.launch(dry_run=True, no_pause = no_pause)
 
     game_agent_class_mapping = offshoot.discover("GameAgent", selection=game_agent_name)
     game_agent_class = game_agent_class_mapping.get(game_agent_name)
