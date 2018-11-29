@@ -340,6 +340,7 @@ def plugins():
 
 def launch(game_name, no_pause=0):
     game = initialize_game(game_name, no_pause = no_pause)
+    print("a no_pause is", no_pause)
     game.launch()
 
 
