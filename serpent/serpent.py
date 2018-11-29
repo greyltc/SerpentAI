@@ -339,9 +339,8 @@ def plugins():
 
 
 def launch(game_name, no_pause=0):
-    game = initialize_game(game_name, no_pause = no_pause)
-    print("a no_pause is", no_pause)
-    game.launch()
+    game = initialize_game(game_name)
+    game.launch(no_pause = no_pause)
 
 
 def play(game_name, game_agent_name, frame_handler=None):
@@ -562,7 +561,7 @@ def train_context(epochs=3, validate=True, autosave=False):
     ContextClassifier.executable_train(epochs=int(epochs), validate=argv_is_true(validate), autosave=argv_is_true(autosave))
 
 
-def initialize_game(game_name, no_pause=0):
+def initialize_game(game_name):
     game_class_name = f"Serpent{game_name}Game"
 
     game_class_mapping = offshoot.discover("Game")
@@ -571,7 +570,7 @@ def initialize_game(game_name, no_pause=0):
     if game_class is None:
         raise Exception(f"Game '{game_name}' wasn't found. Make sure the plugin is installed.")
 
-    game = game_class(no_pause = no_pause)
+    game = game_class()
 
     return game
 

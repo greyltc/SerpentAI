@@ -47,7 +47,7 @@ class Game(offshoot.Pluggable):
         self.config = config.get(f"{self.__class__.__name__}Plugin")
 
         self.platform = kwargs.get("platform")
-        self.no_pause = kwargs.get("no_pause")
+        self.no_pause = 0
 
         default_input_controller_backend = InputControllers.NATIVE_WIN32 if is_windows() else InputControllers.PYAUTOGUI
         self.input_controller = kwargs.get("input_controller") or default_input_controller_backend
@@ -112,7 +112,8 @@ class Game(offshoot.Pluggable):
         return self.window_controller.is_window_focused(self.window_id)
 
     @offshoot.forbidden
-    def launch(self, dry_run=False):
+    def launch(self, dry_run=False, no_pause = 0):
+        self.no_pause = no_pause;
         self.before_launch()
 
         if not dry_run:
@@ -194,7 +195,6 @@ class Game(offshoot.Pluggable):
                         game_agent.on_game_frame(game_frame, frame_handler=frame_handler, **kwargs)
                     else:
                         clear_terminal()
-                        print("nopause is",self.no_pause)
                         if self.no_pause == 0:
                             print("PAUSED\n")
                         else:
