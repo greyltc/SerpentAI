@@ -9,6 +9,7 @@ import shlex
 import time
 import os, os.path
 import atexit
+import sys
 
 from serpent.game_agent import GameAgent
 
@@ -46,6 +47,7 @@ class Game(offshoot.Pluggable):
         self.config = config.get(f"{self.__class__.__name__}Plugin")
 
         self.platform = kwargs.get("platform")
+        self.no_pause = kwargs.get("no_pause")
 
         default_input_controller_backend = InputControllers.NATIVE_WIN32 if is_windows() else InputControllers.PYAUTOGUI
         self.input_controller = kwargs.get("input_controller") or default_input_controller_backend
@@ -192,7 +194,11 @@ class Game(offshoot.Pluggable):
                         game_agent.on_game_frame(game_frame, frame_handler=frame_handler, **kwargs)
                     else:
                         clear_terminal()
-                        print("PAUSED\n")
+                        if self.no_pause == 0:
+                            print("PAUSED\n")
+                        else:
+                            print("GOODBYE\n")
+                            sys.exit(-1)
 
                         game_agent.on_pause(frame_handler=frame_handler, **kwargs)
 
