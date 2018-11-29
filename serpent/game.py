@@ -194,6 +194,7 @@ class Game(offshoot.Pluggable):
                         game_agent.on_game_frame(game_frame, frame_handler=frame_handler, **kwargs)
                     else:
                         clear_terminal()
+                        print("nopause is",self.no_pause)
                         if self.no_pause == 0:
                             print("PAUSED\n")
                         else:
