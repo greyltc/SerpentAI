@@ -191,16 +191,24 @@ class Game(offshoot.Pluggable):
                 game_frame = self.grab_latest_frame(frame_type=frame_type)
 
                 try:
+                    """
+                    Three options for no_pause (taken when launched with serpent play $game_name $game_agent_name $no_pause)
+                    = 0 --> normal behavior (AI pauses when focus lost, default)
+                    = 1 --> kill mode (AI dies when focus lost)
+                    = anything else --> ignore mode (AI ignores loss of focus)
+                    """
                     if self.is_focused:
                         game_agent.on_game_frame(game_frame, frame_handler=frame_handler, **kwargs)
                     else:
                         clear_terminal()
                         if self.no_pause == 0:
                             print("PAUSED\n")
-                        else:
+                        elif self.no_pause == 1:
                             print("GOODBYE\n")
                             sys.exit(-1)
-
+                        else:
+                            return
+                        
                         game_agent.on_pause(frame_handler=frame_handler, **kwargs)
 
                         time.sleep(1)
