@@ -31,7 +31,10 @@ class SpriteLocator:
                 use_alpha_mask = True
                 threshold = threshold_alpha
         template = sprite.image_data[:,:,:3,0]
-        frame = game_frame.frame
+        if hasattr(game_frame,'frame'):
+            frame = game_frame.frame
+        else:
+            frame = game_frame
         
         # grayscale matching is faster and seems to be good enough all the time
         if grayscale == True:
