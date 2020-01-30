@@ -282,10 +282,8 @@ class PyAutoGUIInputController(InputController):
 
     def drag(self, button=MouseButton.LEFT, x0=None, y0=None, x1=None, y1=None, duration=0.25, **kwargs):
         if ("force" in kwargs and kwargs["force"] is True) or self.game_is_focused:
-            self.move(x=x0, y=y0)
-            self.click_down(button=button, **kwargs)
-            self.move(x=x1, y=y1, duration=duration)
-            self.click_up(button=button, **kwargs)
+            self.move(x0, y0)
+            pyautogui.dragTo(x1, y1, duration=duration, button=mouse_button_mapping[button.name])
 
     def drag_screen_region_to_screen_region(self, button=MouseButton.LEFT, start_screen_region=None, end_screen_region=None, duration=1, **kwargs):
         if ("force" in kwargs and kwargs["force"] is True) or self.game_is_focused:
